@@ -10,8 +10,6 @@ public class PersonService {
 
         ageService.setIfAdult(person);
 
-        ageService.setIfAdult(person);
-
         return ageService.printAge(person);
     }
 }

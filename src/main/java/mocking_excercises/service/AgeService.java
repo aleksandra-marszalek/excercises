@@ -13,7 +13,7 @@ public class AgeService {
         }
     }
 
-    public String printAge (Person person) {
+    public String printAge(Person person) {
 
         String result;
 
