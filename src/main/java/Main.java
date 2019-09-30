@@ -1,5 +1,6 @@
 import mocking_excercises.model.Person;
 import mocking_excercises.service.AgeService;
+import mocking_excercises.service.PersonService;
 
 import java.io.*;
 import java.util.*;
@@ -12,12 +13,10 @@ public class Main {
 
     public static void main(String[] args) {
 
-        AgeService ageService = new AgeService();
-
         Person person = new Person("Ola", 27);
 
-        ageService.setIfAdult(person);
+        PersonService personService = new PersonService();
 
-        System.out.println(ageService.printAge(person));
+        System.out.println(personService.checkIfAdult(person));
     }
 }

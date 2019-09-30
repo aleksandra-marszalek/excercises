@@ -26,6 +26,4 @@ public class AgeService {
         return result;
     }
 
-
-
 }
