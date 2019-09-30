@@ -24,8 +24,7 @@ public class Solution {
                 sum += A[j];
 
 
-                if (sum < 0);
-                {
+                if (sum < 0) {
                     negCount++;
                 }
             }
