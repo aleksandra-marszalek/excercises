@@ -17,6 +17,11 @@ public class Main {
 
         PersonService personService = new PersonService(new AgeService());
 
-        System.out.println(personService.checkIfAdult(person));
+
+        Person negAge = new Person("under", -5);
+
+        PersonService perService = new PersonService(new AgeService());
+
+        System.out.println(personService.checkIfAdult(negAge));
     }
 }

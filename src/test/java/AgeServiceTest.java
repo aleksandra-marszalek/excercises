@@ -31,8 +31,4 @@ public class AgeServiceTest {
         assertEquals("Invalid Age", age.printAge(negAgeTest));
     }
 
-    @Test
-    public void testSetIfAdult() {
-
-    }
 }
