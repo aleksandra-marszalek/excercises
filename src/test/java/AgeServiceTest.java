@@ -18,8 +18,19 @@ public class AgeServiceTest {
 
     @Test
     public void testAnAdult() {
-        Person over = new Person("testName2", 21);
+        Person over = new Person("testName2", 23);
+        over.setAdult(true);
         assertEquals("testName2 is an adult", age.printAge(over));
     }
 
+    @Test
+    public void testNegativeAge() {
+        Person negAgeTest = new Person("Name", -4);
+        assertEquals("Invalid Age", age.printAge(negAgeTest));
+    }
+
+    @Test
+    public void testSetIfAdult() {
+
+    }
 }
