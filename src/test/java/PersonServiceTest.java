@@ -22,6 +22,12 @@ public class PersonServiceTest {
         assertEquals("younger is underage", person.checkIfAdult(child));
     }
 
+    @Test
+    public void negativeAge() {
+        Person negAge = new Person("under", -5);
+        assertEquals("Invalid Age", person.checkIfAdult(negAge));
+    }
+
 
 
 
