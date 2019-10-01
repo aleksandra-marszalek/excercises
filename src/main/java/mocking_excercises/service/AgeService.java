@@ -4,13 +4,14 @@ import mocking_excercises.model.Person;
 
 public class AgeService {
 
-    public void setIfAdult(Person person) {
+    public boolean checkIfAdult(Person person) {
 
         Integer age = person.getAge();
 
         if (age>=18) {
-            person.setAdult(true);
+            return true;
             }
+        return false;
         }
 
 

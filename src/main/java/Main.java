@@ -15,7 +15,7 @@ public class Main {
 
         Person person = new Person("Ola", 27);
 
-        PersonService personService = new PersonService();
+        PersonService personService = new PersonService(new AgeService());
 
         System.out.println(personService.checkIfAdult(person));
     }
