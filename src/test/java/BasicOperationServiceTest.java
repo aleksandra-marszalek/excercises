@@ -17,16 +17,6 @@ public class BasicOperationServiceTest {
 
     @Before
     public void setup() {
-        /*Input posAPosB = new Input(1,1);
-        Input posANegB = new Input(1, -1);
-        Input negAPosB = new Input(-1, 1);
-        Input negANegB = new Input(-1, -1);
-        Input posAZeroB = new Input(1, 0);
-        Input zeroAPosB = new Input(0, 1);
-        Input zeroAZeroB = new Input(0, 0);
-        Input posANullB = new Input(1, null);
-        Input nullAposA = new Input (null, 1); */
-
         bOS = new BasicOperationService();
     }
 
@@ -123,14 +113,22 @@ public class BasicOperationServiceTest {
     }
 
     @Test (expected = IllegalArgumentException.class)
-    public void divPosZero() {
+    public void divPosZeroException() {
         assertThat(bOS.divide(1,0), is("Wrong argument - b cannot be 0"));
+    }
+
+    @Test
+    public void divZeroPos() {
         assertThat(bOS.divide(0, 2), is(0));
     }
 
     @Test (expected = IllegalArgumentException.class)
-    public void divPosNull() {
+    public void divPosNullException() {
         assertThat(bOS.divide(2, null), is("Wrong argument - b cannot be 0"));
+    }
+
+    @Test
+    public void divNullPos() {
         assertThat(bOS.divide(null, 3), is(0));
     }
 

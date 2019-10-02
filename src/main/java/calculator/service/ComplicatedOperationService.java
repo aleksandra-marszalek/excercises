@@ -15,28 +15,18 @@ public class ComplicatedOperationService {
     }
 
     public Double sum (Input input) {
-
         return Double.valueOf(basicOperationService.add(input.getA(), input.getB()));
-
     }
 
     public Double subtraction (Input input) {
-
         return Double.valueOf(basicOperationService.subtract(input.getA(), input.getB()));
-
     }
 
     public Double muliplication (Input input) {
-
         return Double.valueOf(basicOperationService.multiply(input.getA(), input.getB()));
-
     }
 
     public Double division (Input input) {
-
         return Double.valueOf(basicOperationService.divide(input.getA(), input.getB()));
-
     }
-
-
 }

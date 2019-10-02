@@ -32,6 +32,7 @@ public class BasicOperationService {
     public Integer divide (Integer a, Integer b) {
         if (a == null){
             a = 0;
+
         } else if (b == null){
             b = 0;
         }
