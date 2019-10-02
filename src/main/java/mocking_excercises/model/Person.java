@@ -30,10 +30,11 @@ public class Person {
     }
 
     public boolean isAdult() {
+
         return isAdult;
     }
 
-    public void setAdult(boolean adult) {
+    public void setAdult(Boolean adult) {
         isAdult = adult;
     }
 }
