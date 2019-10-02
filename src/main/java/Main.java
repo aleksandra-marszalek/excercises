@@ -20,6 +20,6 @@ public class Main {
 
         complicatedOperationService.setBasicOperationService(new BasicOperationService());
 
-        System.out.println(complicatedOperationService.sum(new Input(13, 1)));
+        System.out.println(complicatedOperationService.division(new Input(13, 13)));
     }
 }
