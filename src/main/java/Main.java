@@ -13,10 +13,18 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Person person = new Person("Ola", 27);
+        /*Person person = new Person("Ola", 27);
 
-        PersonService personService = new PersonService();
+        PersonService personService = new PersonService(new AgeService());
 
-        System.out.println(personService.checkIfAdult(person));
+
+        Person negAge = new Person("under", -5);
+
+        PersonService perService = new PersonService(ne574w AgeService());
+
+        System.out.println(personService.checkIfAdult(negAge)); */
+
+        ListCreation trialList = new ListCreation();
+        trialList.listAmmend();
     }
 }
