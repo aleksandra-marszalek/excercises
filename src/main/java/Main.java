@@ -1,3 +1,6 @@
+import calculator.model.Input;
+import calculator.service.BasicOperationService;
+import calculator.service.ComplicatedOperationService;
 import mocking_excercises.model.Person;
 import mocking_excercises.service.AgeService;
 import mocking_excercises.service.PersonService;
@@ -13,10 +16,10 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Person person = new Person("Ola", 27);
+        ComplicatedOperationService complicatedOperationService = new ComplicatedOperationService();
 
-        PersonService personService = new PersonService();
+        complicatedOperationService.setBasicOperationService(new BasicOperationService());
 
-        System.out.println(personService.checkIfAdult(person));
+        System.out.println(complicatedOperationService.sum(new Input(13, 1)));
     }
 }
