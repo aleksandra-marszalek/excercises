@@ -26,11 +26,12 @@ public class ComplicatedOperationService {
         return Double.valueOf(basicOperationService.subtract(input.getA(), input.getB()));
     }
 
-    public Double muliplication (Input input) {
+    public Double multiplication (Input input) {
         return Double.valueOf(basicOperationService.multiply(input.getA(), input.getB()));
     }
 
     public Double division (Input input) {
+        //if (input.getB() == 0){
         return Double.valueOf(basicOperationService.divide(input.getA(), input.getB()));
     }
 

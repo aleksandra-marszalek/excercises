@@ -16,13 +16,13 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Input numbers = new Input(6,3);
+        Input numbers = new Input(-1,1);
 
         ComplicatedOperationService complicatedOperationService = new ComplicatedOperationService();
 
         complicatedOperationService.setBasicOperationService(new BasicOperationService());
 
-        System.out.println(complicatedOperationService.division(numbers));
+        System.out.println(complicatedOperationService.multiplication(numbers));
 
     }
 }

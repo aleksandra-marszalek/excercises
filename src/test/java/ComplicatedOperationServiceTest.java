@@ -114,12 +114,106 @@ public class ComplicatedOperationServiceTest {
     }
 
     @Test
-    public void subPosZero() {
+    public void subtractionPosZero() {
         Mockito.when(bOS.subtract(posAZeroB.getA(), posAZeroB.getB())).thenReturn(1);
         assertThat(cOS.subtraction(posAZeroB), is(1.0));
         Mockito.when(bOS.subtract(zeroAPosB.getA(), zeroAPosB.getB())).thenReturn(1);
         assertThat(cOS.subtraction(zeroAPosB), is(1.0));
     }
 
+    @Test
+    public void subtractionZeroZero() {
+        Mockito.when(bOS.subtract(zeroAPosB.getA(), zeroAPosB.getB())).thenReturn(0);
+        assertThat(cOS.subtraction(zeroAZeroB), is(0.0));
+    }
 
+    @Test
+    public void subtractionPosNull() {
+        Mockito.when(bOS.subtract(posANullB.getA(), posANullB.getB())).thenReturn(1);
+        assertThat(cOS.subtraction(posANullB), is(1.0));
+        Mockito.when(bOS.subtract(posANullB.getA(), posANullB.getB())).thenReturn(1);
+        assertThat(cOS.subtraction(posANullB), is(1.0));
+    }
+
+    //MultiplicationTests
+    @Test
+    public void multiplicationPosPos() {
+        Mockito.when(bOS.multiply(posAPosB.getA(), posAPosB.getB())).thenReturn(1);
+        assertThat(cOS.multiplication(posAPosB), is(1.0));
+    }
+
+    @Test
+    public void multiplicationPosNeg() {
+        Mockito.when(bOS.multiply(posANegB.getA(), posANegB.getB())).thenReturn(-1);
+        assertThat(cOS.multiplication(posANegB), is(-1.0));
+        Mockito.when(bOS.multiply(negAPosB.getA(), negAPosB.getB())).thenReturn(-1);
+        assertThat(cOS.multiplication(negAPosB), is(-1.0));
+    }
+
+    @Test
+    public void multiplicationNegNeg() {
+        Mockito.when(bOS.multiply(negANegB.getA(), negANegB.getB())).thenReturn(1);
+        assertThat(cOS.multiplication(negANegB), is(1.0));
+    }
+
+    @Test
+    public void multiplicationPosZero() {
+        Mockito.when(bOS.multiply(posAZeroB.getA(), posAZeroB.getB())).thenReturn(0);
+        assertThat(cOS.multiplication(posAZeroB), is(0.0));
+        Mockito.when(bOS.multiply(zeroAPosB.getA(), zeroAPosB.getB())).thenReturn(0);
+        assertThat(cOS.multiplication(zeroAPosB), is(0.0));
+    }
+
+    @Test
+    public void multiplicationPosNull() {
+        Mockito.when(bOS.multiply(posANullB.getA(), posANullB.getB())).thenReturn(0);
+        assertThat(cOS.multiplication(posANullB), is(0.0));
+        Mockito.when(bOS.multiply(nullAPosB.getA(), nullAPosB.getB())).thenReturn(0);
+        assertThat(cOS.multiplication(nullAPosB), is(0.0));
+    }
+
+    //Division Tests
+    @Test
+    public void divisionPosPos() {
+        Mockito.when(bOS.divide(posAPosB.getA(), posAPosB.getB())).thenReturn(1);
+        assertThat(cOS.division(posAPosB), is(1.0));
+    }
+
+    @Test
+    public void divisionPosNeg() {
+        Mockito.when(bOS.divide(posANegB.getA(), posANegB.getB())).thenReturn(-1);
+        assertThat(cOS.division(posANegB), is(-1.0));
+        Mockito.when(bOS.divide(negAPosB.getA(), negAPosB.getB())).thenReturn(-1);
+        assertThat(cOS.division(negAPosB), is(-1.0));
+    }
+
+    @Test
+    public void divisionNegNeg() {
+        Mockito.when(bOS.divide(negANegB.getA(), negANegB.getB())).thenReturn(1);
+        assertThat(cOS.division(negANegB), is(1.0));
+    }
+
+    @Test (expected = IllegalArgumentException.class)
+    public void divisionPosZero() {
+        Mockito.when(bOS.divide(posAZeroB.getA(), posAZeroB.getB())).thenThrow(new IllegalArgumentException());
+        assertThat(cOS.division(posAZeroB), is("Wrong argument - b cannot be 0"));
+    }
+
+    @Test
+    public void divisionZeroPos() {
+        Mockito.when(bOS.divide(zeroAPosB.getA(), zeroAPosB.getB())).thenReturn(0);
+        assertThat(cOS.division(zeroAPosB), is(0.0));
+    }
+
+    @Test (expected = IllegalArgumentException.class)
+    public void divisionPosNull() {
+        Mockito.when(bOS.divide(posANullB.getA(), posANullB.getB())).thenThrow(new IllegalArgumentException());
+        assertThat(cOS.division(posANullB), is("Wrong argument - b cannot be 0"));
+    }
+
+    @Test
+    public void divisionNullPos() {
+        Mockito.when(bOS.divide(nullAPosB.getA(), nullAPosB.getB())).thenReturn(0);
+        assertThat(cOS.division(nullAPosB), is(0.0));
+    }
 }
