@@ -22,7 +22,13 @@ public class Main {
 
         complicatedOperationService.setBasicOperationService(new BasicOperationService());
 
-        System.out.println(complicatedOperationService.multiplication(numbers));
+        //System.out.println(complicatedOperationService.multiplication(numbers));
+
+
+        Input nullInput = new Input(null, null);
+
+        System.out.println(complicatedOperationService.isResultPositive(null));
+        System.out.println(complicatedOperationService.isResultPositive(nullInput));
 
     }
 }

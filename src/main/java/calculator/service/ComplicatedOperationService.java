@@ -31,7 +31,6 @@ public class ComplicatedOperationService {
     }
 
     public Double division (Input input) {
-        //if (input.getB() == 0){
         return Double.valueOf(basicOperationService.divide(input.getA(), input.getB()));
     }
 

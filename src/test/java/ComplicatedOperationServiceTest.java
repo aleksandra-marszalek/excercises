@@ -15,13 +15,8 @@ import static org.hamcrest.Matchers.*;
 @RunWith(MockitoJUnitRunner.class)
 public class ComplicatedOperationServiceTest {
 
-
     private ComplicatedOperationService cOS;
-
-
-    @Mock
-    private BasicOperationService bOS;
-
+    //Inputs for sum, subtraction, multiplication, and division
     private Input posAPosB;
     private Input posANegB;
     private Input negAPosB;
@@ -32,8 +27,17 @@ public class ComplicatedOperationServiceTest {
     private Input posANullB;
     private Input nullAPosB;
 
+
+    private Input nullInput;
+    private Input nullANullB;
+
+
+    @Mock
+    private BasicOperationService bOS;
+
     @Before
     public void setup() {
+        //Inputs setup
         posAPosB = new Input(1,1);
         posANegB = new Input(1, -1);
         negAPosB = new Input(-1, 1);
@@ -42,11 +46,12 @@ public class ComplicatedOperationServiceTest {
         zeroAPosB = new Input(0, 1);
         zeroAZeroB = new Input(0, 0);
         posANullB = new Input(1, null);
-        nullAPosB = new Input (null, 1);
+        nullAPosB = new Input(null, 1);
+        nullANullB = new Input(null, null);
+        nullInput = null;
 
         cOS = new ComplicatedOperationService();
         cOS.setBasicOperationService(bOS);
-
     }
 
     //Sum Tests
@@ -103,8 +108,8 @@ public class ComplicatedOperationServiceTest {
     public void subtractionPosNeg() {
         Mockito.when(bOS.subtract(posANegB.getA(), posANegB.getB())).thenReturn(2);
         assertThat(cOS.subtraction(posANegB), is(2.0));
-        Mockito.when(bOS.subtract(negAPosB.getA(), negAPosB.getB())).thenReturn(2);
-        assertThat(cOS.subtraction(negAPosB), is(2.0));
+        Mockito.when(bOS.subtract(negAPosB.getA(), negAPosB.getB())).thenReturn(-2);
+        assertThat(cOS.subtraction(negAPosB), is(-2.0));
     }
 
     @Test
@@ -117,8 +122,8 @@ public class ComplicatedOperationServiceTest {
     public void subtractionPosZero() {
         Mockito.when(bOS.subtract(posAZeroB.getA(), posAZeroB.getB())).thenReturn(1);
         assertThat(cOS.subtraction(posAZeroB), is(1.0));
-        Mockito.when(bOS.subtract(zeroAPosB.getA(), zeroAPosB.getB())).thenReturn(1);
-        assertThat(cOS.subtraction(zeroAPosB), is(1.0));
+        Mockito.when(bOS.subtract(zeroAPosB.getA(), zeroAPosB.getB())).thenReturn(-1);
+        assertThat(cOS.subtraction(zeroAPosB), is(-1.0));
     }
 
     @Test
@@ -216,4 +221,47 @@ public class ComplicatedOperationServiceTest {
         Mockito.when(bOS.divide(nullAPosB.getA(), nullAPosB.getB())).thenReturn(0);
         assertThat(cOS.division(nullAPosB), is(0.0));
     }
+
+    //isResultsPositive Tests
+    @Test
+    public void isResultPositiveNullInput() {
+        assertThat(cOS.isResultPositive(nullInput), is("Input cannot be null"));
+    }
+
+    @Test
+    public void isResultPositiveNullNull() {
+        assertThat(cOS.isResultPositive(nullANullB), is("Input values cannot be null"));
+    }
+
+    @Test
+    public void isResultPositivePosNull() {
+        assertThat(cOS.isResultPositive(posANullB), is("Input values cannot be null"));
+        assertThat(cOS.isResultPositive(nullAPosB), is("Input values cannot be null"));
+    }
+
+    @Test
+    public void isResultPositivePositive() {
+        Mockito.when(bOS.subtract(posANegB.getA(), posANegB.getB())).thenReturn(2);
+        assertThat(cOS.isResultPositive(posANegB), is("Result is positive"));
+    }
+
+    @Test
+    public void isResultPositiveNegative() {
+        Mockito.when(bOS.subtract(negAPosB.getA(), negAPosB.getB())).thenReturn(-2);
+        assertThat(cOS.isResultPositive(negAPosB), is("Result is negative"));
+    }
+
+    @Test
+    public void isResultPositiveZero() {
+        Mockito.when(bOS.subtract(posAPosB.getA(), posAPosB.getB())).thenReturn(0);
+        assertThat(cOS.isResultPositive(posAPosB), is("Result equals 0"));
+    }
+
+
+
+
+
+
+
+
 }
