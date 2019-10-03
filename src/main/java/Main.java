@@ -1,3 +1,6 @@
+import calculator.model.Input;
+import calculator.service.BasicOperationService;
+import calculator.service.ComplicatedOperationService;
 import mocking_excercises.model.Person;
 import mocking_excercises.service.AgeService;
 import mocking_excercises.service.PersonService;
@@ -13,18 +16,21 @@ public class Main {
 
     public static void main(String[] args) {
 
-        /*Person person = new Person("Ola", 27);
+        Input numbers = new Input(-1,1);
 
-        PersonService personService = new PersonService(new AgeService());
+        ComplicatedOperationService complicatedOperationService = new ComplicatedOperationService();
+
+        complicatedOperationService.setBasicOperationService(new BasicOperationService());
+
+        //System.out.println(complicatedOperationService.multiplication(numbers));
 
 
-        Person negAge = new Person("under", -5);
+        Input nullInput = new Input(0, 0);
 
-        PersonService perService = new PersonService(ne574w AgeService());
+        //System.out.println(complicatedOperationService.isResultPositive(null));
+        //System.out.println(complicatedOperationService.isResultPositive(nullInput));
 
-        System.out.println(personService.checkIfAdult(negAge)); */
+        System.out.println(complicatedOperationService.division(nullInput));
 
-        ListCreation trialList = new ListCreation();
-        trialList.listAmmend();
     }
 }

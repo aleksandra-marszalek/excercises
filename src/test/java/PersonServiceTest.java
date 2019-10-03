@@ -28,9 +28,9 @@ public class PersonServiceTest {
     @Test
     public void isAnAdult() {
 
-        Person adult = new Person("older", 19);
+        Person adult = new Person("older", 19);  //input
 
-        Mockito.when(ageService.checkIfAdult(adult)).thenReturn(true);
+        //Mockito.when(ageService.checkIfAdult(adult)).thenReturn(true);
 
         Mockito.when(ageService.printAge(adult)).thenReturn("older is an adult");
 
@@ -63,6 +63,5 @@ public class PersonServiceTest {
         assertEquals("Invalid Age", person.checkIfAdult(negAge));
 
     }
-
 
 }
