@@ -9,6 +9,10 @@ import org.mockito.internal.matchers.Null;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.Assert.*;
 import static org.hamcrest.Matchers.*;
 
@@ -27,9 +31,14 @@ public class ComplicatedOperationServiceTest {
     private Input posANullB;
     private Input nullAPosB;
 
-
     private Input nullInput;
     private Input nullANullB;
+
+    private List<Double> posPos;
+    private List<Double> posNeg;
+    private List<Double> negPos;
+    private List<Double> negNeg;
+    private List<Double> zeroPos;
 
 
     @Mock
@@ -52,6 +61,34 @@ public class ComplicatedOperationServiceTest {
 
         cOS = new ComplicatedOperationService();
         cOS.setBasicOperationService(bOS);
+
+        posPos = new ArrayList<>();
+        posPos.add(2.0);
+        posPos.add(0.0);
+        posPos.add(1.0);
+        posPos.add(1.0);
+        posNeg = new ArrayList<>();
+        posNeg.add(0.0);
+        posNeg.add(2.0);
+        posNeg.add(-1.0);
+        posNeg.add(-1.0);
+        negPos = new ArrayList<>();
+        negPos.add(0.0);
+        negPos.add(-2.0);
+        negPos.add(-1.0);
+        negPos.add(-1.0);
+        negNeg = new ArrayList<>();
+        negNeg.add(-2.0);
+        negNeg.add(0.0);
+        negNeg.add(1.0);
+        negNeg.add(1.0);
+        zeroPos = new ArrayList<>();
+        zeroPos.add(1.0);
+        zeroPos.add(-1.0);
+        zeroPos.add(0.0);
+        zeroPos.add(0.0);
+
+
     }
 
     //Sum Tests
@@ -211,6 +248,12 @@ public class ComplicatedOperationServiceTest {
     }
 
     @Test (expected = IllegalArgumentException.class)
+    public void divisionZeroZero() {
+        Mockito.when(bOS.divide(zeroAPosB.getA(), zeroAZeroB.getB())).thenThrow(new IllegalArgumentException());
+        assertThat(cOS.division(zeroAZeroB), is("Wrong argument - b cannot be 0"));
+    }
+
+    @Test (expected = IllegalArgumentException.class)
     public void divisionPosNull() {
         Mockito.when(bOS.divide(posANullB.getA(), posANullB.getB())).thenThrow(new IllegalArgumentException());
         assertThat(cOS.division(posANullB), is("Wrong argument - b cannot be 0"));
@@ -257,9 +300,91 @@ public class ComplicatedOperationServiceTest {
         assertThat(cOS.isResultPositive(posAPosB), is("Result equals 0"));
     }
 
+    //resultList Tests
+    @Test
+    public void resultListNullInput() {
+        assertThat(cOS.resultList(nullInput), is(new ArrayList<>()));
+    }
 
+    @Test
+    public void resultListNullNull() {
+        assertThat(cOS.resultList(nullANullB), is(new ArrayList<>()));
+    }
 
+    @Test
+    public void resultListPosNull() {
+        assertThat(cOS.resultList(posANullB), is(new ArrayList<>()));
+        assertThat(cOS.resultList(nullAPosB), is(new ArrayList<>()));
+    }
 
+    @Test
+    public void resultListPosPos() {
+        Mockito.when(bOS.add(posAPosB.getA(), posAPosB.getB())).thenReturn(2);
+        Mockito.when(bOS.subtract(posAPosB.getA(), posAPosB.getB())).thenReturn(0);
+        Mockito.when(bOS.multiply(posAPosB.getA(), posAPosB.getB())).thenReturn(1);
+        Mockito.when(bOS.divide(posAPosB.getA(), posAPosB.getB())).thenReturn(1);
+        assertThat(cOS.resultList(posAPosB), is(posPos));
+    }
+
+    @Test
+    public void resultListPosNeg() {
+        Mockito.when(bOS.add(posANegB.getA(), posANegB.getB())).thenReturn(0);
+        Mockito.when(bOS.subtract(posANegB.getA(), posANegB.getB())).thenReturn(2);
+        Mockito.when(bOS.multiply(posANegB.getA(), posANegB.getB())).thenReturn(-1);
+        Mockito.when(bOS.divide(posANegB.getA(), posANegB.getB())).thenReturn(-1);
+        assertThat(cOS.resultList(posANegB), is(posNeg));
+    }
+
+    @Test
+    public void resultListNegPos() {
+        Mockito.when(bOS.add(negAPosB.getA(), negAPosB.getB())).thenReturn(0);
+        Mockito.when(bOS.subtract(negAPosB.getA(), negAPosB.getB())).thenReturn(-2);
+        Mockito.when(bOS.multiply(negAPosB.getA(), negAPosB.getB())).thenReturn(-1);
+        Mockito.when(bOS.divide(negAPosB.getA(), negAPosB.getB())).thenReturn(-1);
+        assertThat(cOS.resultList(negAPosB), is(negPos));
+    }
+
+    @Test
+    public void resultListNegNeg() {
+        Mockito.when(bOS.add(negANegB.getA(), negANegB.getB())).thenReturn(-2);
+        Mockito.when(bOS.subtract(negANegB.getA(), negANegB.getB())).thenReturn(0);
+        Mockito.when(bOS.multiply(negANegB.getA(), negANegB.getB())).thenReturn(1);
+        Mockito.when(bOS.divide(negANegB.getA(), negANegB.getB())).thenReturn(1);
+        assertThat(cOS.resultList(negANegB), is(negNeg));
+    }
+
+    @Test (expected = IllegalArgumentException.class)
+    public void resultListPosZero() {
+        Mockito.when(bOS.add(posAZeroB.getA(), posAZeroB.getB())).thenReturn(1);
+        Mockito.when(bOS.subtract(posAZeroB.getA(), posAZeroB.getB())).thenReturn(1);
+        Mockito.when(bOS.multiply(posAZeroB.getA(), posAZeroB.getB())).thenReturn(0);
+        Mockito.when(bOS.divide(posAZeroB.getA(), posAZeroB.getB())).thenThrow(new IllegalArgumentException());
+        assertThat(cOS.resultList(posAZeroB), is("Wrong argument - b cannot be 0"));
+    }
+
+    @Test
+    public void resultListZeroPos() {
+        Mockito.when(bOS.add(zeroAPosB.getA(), zeroAPosB.getB())).thenReturn(1);
+        Mockito.when(bOS.subtract(zeroAPosB.getA(), zeroAPosB.getB())).thenReturn(-1);
+        Mockito.when(bOS.multiply(zeroAPosB.getA(), zeroAPosB.getB())).thenReturn(0);
+        Mockito.when(bOS.divide(zeroAPosB.getA(), zeroAPosB.getB())).thenReturn(0);
+        assertThat(cOS.resultList(zeroAPosB), is(zeroPos));
+    }
+
+    @Test (expected = IllegalArgumentException.class)
+    public void resultListZeroZero() {
+        Mockito.when(bOS.add(zeroAZeroB.getA(), zeroAZeroB.getB())).thenReturn(0);
+        Mockito.when(bOS.subtract(zeroAZeroB.getA(), zeroAZeroB.getB())).thenReturn(0);
+        Mockito.when(bOS.multiply(zeroAZeroB.getA(), zeroAZeroB.getB())).thenReturn(0);
+        Mockito.when(bOS.divide(zeroAZeroB.getA(), zeroAZeroB.getB())).thenThrow(new IllegalArgumentException());
+        assertThat(cOS.resultList(zeroAZeroB), is("Wrong argument - b cannot be 0"));
+    }
+
+    //getBasicOperationService Test
+    @Test
+    public void getBasicOperationServiceTest() {
+        assertThat(cOS.getBasicOperationService(), is(bOS));
+    }
 
 
 

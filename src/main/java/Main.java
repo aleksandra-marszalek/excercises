@@ -25,10 +25,12 @@ public class Main {
         //System.out.println(complicatedOperationService.multiplication(numbers));
 
 
-        Input nullInput = new Input(null, null);
+        Input nullInput = new Input(0, 0);
 
-        System.out.println(complicatedOperationService.isResultPositive(null));
-        System.out.println(complicatedOperationService.isResultPositive(nullInput));
+        //System.out.println(complicatedOperationService.isResultPositive(null));
+        //System.out.println(complicatedOperationService.isResultPositive(nullInput));
+
+        System.out.println(complicatedOperationService.division(nullInput));
 
     }
 }
