@@ -22,7 +22,6 @@ public class Main {
                     instructions();
                     break;
                 case 1:
-                    System.out.println("ENTERED 1");
                     contactList.printContacts();
                     break;
                 case 2:
