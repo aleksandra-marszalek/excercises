@@ -1,36 +1,55 @@
-import calculator.model.Input;
-import calculator.service.BasicOperationService;
-import calculator.service.ComplicatedOperationService;
-import mocking_excercises.model.Person;
-import mocking_excercises.service.AgeService;
-import mocking_excercises.service.PersonService;
-
-import java.io.*;
 import java.util.*;
-import java.text.*;
-import java.math.*;
-import java.util.regex.*;
 
 public class Main {
 
+    private static Scanner scanMain = new Scanner(System.in);
+    private static RunMobile runMobile = new RunMobile();
 
     public static void main(String[] args) {
-
-        Input numbers = new Input(-1,1);
-
-        ComplicatedOperationService complicatedOperationService = new ComplicatedOperationService();
-
-        complicatedOperationService.setBasicOperationService(new BasicOperationService());
-
-        //System.out.println(complicatedOperationService.multiplication(numbers));
-
-
-        Input nullInput = new Input(0, 0);
-
-        //System.out.println(complicatedOperationService.isResultPositive(null));
-        //System.out.println(complicatedOperationService.isResultPositive(nullInput));
-
-        System.out.println(complicatedOperationService.division(nullInput));
-
+        boolean quit = false;
+        String choice = "0";
+        runMobile.instructions();
+        while(!quit) {
+            System.out.println("");
+            System.out.println("Enter choice:");
+            choice = scanMain.nextLine();
+            //scanMain.nextLine();
+            switch (choice) {
+                case "0":
+                    runMobile.instructions();
+                    break;
+                case "1":
+                    runMobile.printContactsFromMobilePhone();
+                    break;
+                case "2":
+                    runMobile.newContact();
+                    break;
+                case "3":
+                    runMobile.loseContact();
+                    break;
+                case "4":
+                    runMobile.modifyContactName();
+                    break;
+                case "5":
+                    runMobile.modifyContactNumber();
+                    break;
+                case "6":
+                    runMobile.locateContactName();
+                    break;
+                case "7":
+                    runMobile.locateContactNumber();
+                    break;
+                case "8":
+                    quit = true;
+                    System.out.println("Closed Contacts.");
+                    runMobile.closeScanner();
+                    scanMain.close();
+                    break;
+                default:
+                    System.out.println(choice + " is an invalid input!");
+                    System.out.println("Please enter a valid choice");
+                    System.out.println("For a list of valid inputs, please enter 0");
+            }
+        }
     }
 }
