@@ -21,11 +21,21 @@ public class MobilePhone {
         return numbersList;
     }
 
-    public void printContacts() {
+    public String blankSpace(String name) {
+        int repeat = 15 - name.length();
+        String blanks = "";
+        for (int i=0; i < repeat; i++) {
+            blanks = blanks.concat(" ");
+        }
+        return blanks;
+    }
 
+    public void printContacts() {
         System.out.println("You have " + contactList.size() + " Contact(s).");
+        System.out.println("   Contact          Number");
         for (int i = 0; i < contactList.size(); i++) {
-            System.out.println((i+1) + ") " + contactList.get(i) + " : " + numbersList.get(i));
+            String spaces = blankSpace(contactList.get(i));
+            System.out.println((i+1) + ") " + contactList.get(i) + spaces + ": " + numbersList.get(i));
         }
     }
 

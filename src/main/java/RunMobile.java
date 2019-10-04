@@ -27,7 +27,14 @@ public class RunMobile {
         String newContact = scan.nextLine();
         System.out.println("Enter new Contact Number:");
         String newNumber = scan.nextLine();
-        contactList.addContact(newContact, newNumber);
+        boolean validName = validNameLength(newContact);
+        boolean correctLength = validNumberLength(newNumber);
+        boolean numsOnly = validNumberContents(newNumber);
+        if (validName && correctLength && numsOnly) {
+            contactList.addContact(newContact, newNumber);
+        } else {
+            System.out.println("Returning to main menu.");
+        }
     }
 
     public void loseContact() {
@@ -40,7 +47,12 @@ public class RunMobile {
         String oldContact = scan.nextLine();
         System.out.println("Enter modified Contact Name");
         String newContact = scan.nextLine();
-        contactList.replaceContactName(newContact, oldContact);
+        boolean validName = validNameLength(newContact);
+        if (validName) {
+            contactList.replaceContactName(newContact, oldContact);
+        } else {
+            System.out.println("Returning to main menu.");
+        }
     }
 
     public void modifyContactNumber() {
@@ -48,7 +60,13 @@ public class RunMobile {
         String oldContact = scan.nextLine();
         System.out.println("Enter modified Contact Number");
         String newContactNumber = scan.nextLine();
-        contactList.replaceContactNumber(newContactNumber, oldContact);
+        boolean correctLength = validNumberLength(newContactNumber);
+        boolean numsOnly = validNumberContents(newContactNumber);
+        if (correctLength && numsOnly) {
+            contactList.replaceContactNumber(newContactNumber, oldContact);
+        } else {
+            System.out.println("Returning to main menu.");
+        }
     }
 
     public void locateContactName() {
@@ -73,6 +91,41 @@ public class RunMobile {
             System.out.println(foundNumber + " is not in Contacts");
         }
 
+    }
+
+    public void closeScanner() {
+        scan.close();
+    }
+
+    public boolean validNumberLength(String number){
+        int len = number.length();
+        if (len != 11) {
+            System.out.println("Invalid length number!");
+            System.out.println("UK numbers are 11 digits long.");
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    public boolean validNumberContents(String number) {
+        if(number.matches("[0-9]+")){
+            return true;
+        } else {
+            System.out.println("Invalid Number!");
+            System.out.println("Numbers can only contain digits.");
+            return false;
+        }
+    }
+
+    public boolean validNameLength(String name) {
+        if (name.length() < 15){
+            return true;
+        } else {
+            System.out.println("Name is too long!");
+            System.out.println("Names must be less than 15 characters.");
+            return false;
+        }
     }
 
 
