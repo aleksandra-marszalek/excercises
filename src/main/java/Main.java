@@ -1,46 +1,43 @@
-import java.io.*;
 import java.util.*;
-import java.text.*;
-import java.math.*;
-import java.util.regex.*;
 
 public class Main {
-    private static Scanner scan = new Scanner(System.in);
-    private static MobilePhone contactList = new MobilePhone();
 
+    private static Scanner scanMain = new Scanner(System.in);
+    private static MobilePhone contactList = new MobilePhone();
+    private static RunMobile runMobile = new RunMobile();
 
     public static void main(String[] args) {
         boolean quit = false;
         int choice = 0;
-        instructions();
+        runMobile.instructions();
         while(!quit) {
             System.out.println("Enter choice:");
-            choice = scan.nextInt();
-            scan.nextLine();
+            choice = scanMain.nextInt();
+            scanMain.nextLine();
             switch (choice) {
                 case 0:
-                    instructions();
+                    runMobile.instructions();
                     break;
                 case 1:
-                    contactList.printContacts();
+                    runMobile.printContactsFromMobilePhone();
                     break;
                 case 2:
-                    newContact();
+                    runMobile.newContact();
                     break;
                 case 3:
-                    loseContact();
+                    runMobile.loseContact();
                     break;
                 case 4:
-                    modifyContactName();
+                    runMobile.modifyContactName();
                     break;
                 case 5:
-                    modifyContactNumber();
+                    runMobile.modifyContactNumber();
                     break;
                 case 6:
-                    locateContactName();
+                    runMobile.locateContactName();
                     break;
                 case 7:
-                    locateContactNumber();
+                    runMobile.locateContactNumber();
                     break;
                 case 8:
                     quit = true;
@@ -48,71 +45,5 @@ public class Main {
                     break;
             }
         }
-    }
-
-    public static void instructions() {
-        System.out.println("\nEnter");
-        System.out.println("\t0 - Display Instructions");
-        System.out.println("\t1 - Display Contacts");
-        System.out.println("\t2 - Add a Contact");
-        System.out.println("\t3 - Remove a Contact");
-        System.out.println("\t4 - Change a Contact Name");
-        System.out.println("\t5 - Change a Contact Number");
-        System.out.println("\t6 - Search for a Contact Name");
-        System.out.println("\t7 = Search for a Contact Number");
-        System.out.println("\t8 - Quite Contacts");
-    }
-
-    public static void newContact() {
-        System.out.println("Enter Contact Name:");
-        String newContact = scan.nextLine();
-        System.out.println("Enter new Contact Number:");
-        String newNumber = scan.nextLine();
-        contactList.addContact(newContact, newNumber);
-    }
-
-    public static void loseContact() {
-        System.out.println("Enter Contact Name:");
-        contactList.removeContact(scan.nextLine());
-    }
-
-    public static void modifyContactName() {
-        System.out.println("Enter Contact Name to be modified:");
-        String oldContact = scan.nextLine();
-        System.out.println("Enter modified Contact Name");
-        String newContact = scan.nextLine();
-        contactList.replaceContactName(newContact, oldContact);
-    }
-
-    public static void modifyContactNumber() {
-        System.out.println("Enter Contact Name of Number to be modified:");
-        String oldContact = scan.nextLine();
-        System.out.println("Enter modified Contact Number");
-        String newContactNumber = scan.nextLine();
-        contactList.replaceContactNumber(newContactNumber, oldContact);
-    }
-
-    public static void locateContactName() {
-        System.out.println("Enter Contact Name to be found:");
-        String foundContact = scan.nextLine();
-        int pos = contactList.findContact(foundContact);
-        if (pos >= 0) {
-            System.out.println(foundContact + " is in Contacts at " + (pos+1));
-        } else {
-            System.out.println(foundContact + " is not in Contacts");
-        }
-
-    }
-
-    public static void locateContactNumber() {
-        System.out.println("Enter Contact Number to be found:");
-        String foundNumber = scan.nextLine();
-        int pos = contactList.findNumber(foundNumber);
-        if (pos >= 0) {
-            System.out.println(foundNumber + " is in Contacts at " + (pos+1));
-        } else {
-            System.out.println(foundNumber + " is not in Contacts");
-        }
-
     }
 }
