@@ -3,7 +3,6 @@ import java.util.*;
 public class Main {
 
     private static Scanner scanMain = new Scanner(System.in);
-    private static MobilePhone contactList = new MobilePhone();
     private static RunMobile runMobile = new RunMobile();
 
     public static void main(String[] args) {

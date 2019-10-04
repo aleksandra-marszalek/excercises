@@ -5,6 +5,22 @@ public class MobilePhone {
     private ArrayList<String> contactList = new ArrayList<String>();
     private ArrayList<String> numbersList = new ArrayList<String>();
 
+    public void setContactList(ArrayList<String> contactList) {
+        this.contactList = contactList;
+    }
+
+    public void setNumbersList(ArrayList<String> numbersList) {
+        this.numbersList = numbersList;
+    }
+
+    public ArrayList<String> getContactList() {
+        return contactList;
+    }
+
+    public ArrayList<String> getNumbersList() {
+        return numbersList;
+    }
+
     public void printContacts() {
 
         System.out.println("You have " + contactList.size() + " Contact(s).");
