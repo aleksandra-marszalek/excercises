@@ -50,7 +50,6 @@ public class CompareTest {
 
     private ArrayList<String> arrayMakerZero(){
         ArrayList<String> lister = new ArrayList<String>();
-        lister.add("");
         return lister;
     }
 
@@ -82,7 +81,7 @@ public class CompareTest {
     public void comparissonTestAHasZeroLength() {
         ArrayList<String> a = arrayMakerZero();
         ArrayList<String> b = arrayMakerFive("a", "b", "c", "d", "e");
-        double percentage = compare(a, b);
+        double percentage = compare.comparisson(a, b);
         assertThat(percentage, is(0.0));
     }
 
@@ -90,7 +89,7 @@ public class CompareTest {
     public void comparissonTestBHasZeroLength() {
         ArrayList<String> a = arrayMakerFive("a", "b", "c", "d", "e");
         ArrayList<String> b = arrayMakerZero();
-        double percentage = compare(a, b);
+        double percentage = compare.comparisson(a, b);
         assertThat(percentage, is(0.0));
     }
 
@@ -98,7 +97,28 @@ public class CompareTest {
     public void comparissonTestAAndBHaveZeroLength() {
         ArrayList<String> a = arrayMakerZero();
         ArrayList<String> b = arrayMakerZero();
-        double percentage = compare(a, b);
+        double percentage = compare.comparisson(a, b);
         assertThat(percentage, is(0.0));
+    }
+
+    @Test (expected = NullPointerException.class)
+    public void comparissonTestAIsNull() {
+        ArrayList<String> a = null;
+        ArrayList<String> b = arrayMakerFive("a", "b", "c", "d", "e");
+        double percentage = compare.comparisson(a, b);
+    }
+
+    @Test (expected = NullPointerException.class)
+    public void comparissonTestBIsNull() {
+        ArrayList<String> a = arrayMakerFive("a", "b", "c", "d", "e");
+        ArrayList<String> b = null;
+        double percentage = compare.comparisson(a, b);
+    }
+
+    @Test (expected = NullPointerException.class)
+    public void comparissonTestAAndBAreNull() {
+        ArrayList<String> a = null;
+        ArrayList<String> b = null;
+        double percentage = compare.comparisson(a, b);
     }
 }

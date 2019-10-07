@@ -5,19 +5,10 @@ import java.util.ArrayList;
 public class Compare {
 
     public double comparisson(ArrayList<String> arr1, ArrayList<String> arr2) {
-        int len1 = 0;
-        int len2 = 0;
 
-        ArrayList<String> blank = new ArrayList<String>();
-        blank.add("");
-        if (arr1 == blank) {
-            len1 = 0;
-        } else if (arr2 == blank) {
-            len2 = 0;
-        } else {
-            len1 = arr1.size();
-            len2 = arr2.size();
-        }
+        int len1 = arr1.size();
+        int len2 = arr2.size();
+
         if (len1 == 0 || len2 == 0) {
             return 0.0;
         }
