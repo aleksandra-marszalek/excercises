@@ -5,14 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
-import org.mockito.internal.matchers.Null;
-
-
 import java.util.ArrayList;
-import java.util.List;
-
-import static java.util.Collections.shuffle;
-import list_excercises.service.shuffle;
 import static org.junit.Assert.*;
 import static org.hamcrest.Matchers.*;
 
@@ -38,7 +31,7 @@ public class shuffleTest {
         int posA = output.indexOf("a");
         int posB = output.indexOf("b");
         int posC = output.indexOf("c");
-        int lenIn = output.size();
+        int lenIn = input.size();
         int lenOut = output.size();
 
         assertThat(posA, is(not(-1)));

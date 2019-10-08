@@ -1,5 +1,4 @@
 package list_excercises.service;
-
 import java.util.ArrayList;
 
 public class Compare {
@@ -9,7 +8,7 @@ public class Compare {
         int len1 = arr1.size();
         int len2 = arr2.size();
 
-        if (len1 == 0 || len2 == 0) {
+        if (len1 ==0 || len2 == 0) {
             return 0.0;
         }
 
@@ -19,19 +18,19 @@ public class Compare {
 
         if (len1 >= len2) {
             for (int i=0; i < len2; i++) {
-                if (arr1.get(i) == arr2.get(i)) {
-                    trues = trues + 1.0;
+                if (arr1.get(i).equals(arr2.get(i))) {
+                    trues =+ 1.0;
                 } else {
-                    falses = falses + 1.0;
+                    falses =+ 1.0;
                 }
             }
             perc = (trues * 100) / len1;
         } else {
             for (int j=0; j < len1; j++) {
-                if (arr1.get(j) == arr2.get(j)) {
-                    trues = trues + 1.0;
+                if (arr1.get(j).equals(arr2.get(j))) {
+                    trues =+ 1.0;
                 } else {
-                    falses = falses + 1.0;
+                    falses =+ 1.0;
                 }
             }
             perc = (trues * 100) / len2;

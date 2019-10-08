@@ -8,7 +8,6 @@ public class shuffle {
         int n = arr.size();
 
         if (n <= 1){
-            System.out.println(1);
             return arr;
         }
 
@@ -25,7 +24,6 @@ public class shuffle {
             arr.remove(val);
             arr.add(posTo, val);
         }
-        System.out.println(2);
         return arr;
     }
 }
