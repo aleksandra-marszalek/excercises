@@ -16,5 +16,5 @@ import java.util.List;
 import static org.junit.Assert.*;
 import static org.hamcrest.Matchers.*;
 
-@RunWith(MockitoJUnitRunner.class)
-public class RunMobileTests {}
+//@RunWith(MockitoJUnitRunner.class)
+//public class RunMobileTests {}

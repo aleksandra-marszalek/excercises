@@ -22,7 +22,7 @@ public class MobilePhoneTests {
     private MobilePhone mobilePhone = new MobilePhone();
 
 
-    public ArrayList<String> setupListThree(String a, String b, String c) {
+    private ArrayList<String> setupListThree(String a, String b, String c) {
         ArrayList<String> arrayList = new ArrayList<>();
         arrayList.add(a);
         arrayList.add(b);
@@ -30,7 +30,7 @@ public class MobilePhoneTests {
         return arrayList;
     }
 
-    public ArrayList<String> setupListFour(String a, String b, String c, String d) {
+    private ArrayList<String> setupListFour(String a, String b, String c, String d) {
         ArrayList<String> arrayList = new ArrayList<>();
         arrayList.add(a);
         arrayList.add(b);
