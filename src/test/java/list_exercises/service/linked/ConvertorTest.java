@@ -1,4 +1,4 @@
-package list_exercises_tests;
+package list_exercises.service.linked;
 import list_excercises.service.linked.Convertor;
 import org.junit.Before;
 import org.junit.Test;

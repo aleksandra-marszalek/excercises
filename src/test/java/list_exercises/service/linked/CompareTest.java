@@ -1,4 +1,4 @@
-package list_exercises_tests;
+package list_exercises.service.linked;
 import list_excercises.service.Compare;
 import org.junit.Before;
 import org.junit.Test;

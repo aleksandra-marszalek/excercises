@@ -1,4 +1,4 @@
-package list_exercises_tests;
+package list_exercises.service;
 
 import list_excercises.service.shuffle;
 import org.junit.Before;

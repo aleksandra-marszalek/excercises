@@ -1,17 +1,14 @@
-package set_exercises_tests;
+package set_exercises;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
-import set_exercises.*;
 
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
-
-import static org.hamcrest.MatcherAssert.*;
 import static org.junit.Assert.*;
 
 @RunWith(JUnit4.class)
