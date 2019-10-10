@@ -22,18 +22,18 @@ public class Main {
         solarSystem.put(temp.getKey(), temp);
         planets.add(temp);
 
-        temp = new Planet("Venus", 224.65);
-        solarSystem.put(temp.getKey(), temp);
-        planets.add(temp);
+        HeavenlyBody tempVenus = new Planet("Venus", 224.65);
+        solarSystem.put(tempVenus.getKey(), tempVenus);
+        planets.add(tempVenus);
 
-        temp = new Planet("Earth", 365.25);
-        solarSystem.put(temp.getKey(), temp);
-        planets.add(temp);
+        HeavenlyBody tempEarth = new Planet("Earth", 365.25);
+        solarSystem.put(tempEarth.getKey(), tempEarth);
+        planets.add(tempEarth);
 
         HeavenlyBody tempMoon = new Moon("Moon", 27.30);
         solarSystem.put(tempMoon.getKey(), tempMoon);
         moons.add(tempMoon);
-        temp.addSatellite(tempMoon);
+        tempEarth.addSatellite(tempVenus);
 
         temp = new Planet("Mars", 687.00);
         solarSystem.put(temp.getKey(), temp);
@@ -101,12 +101,15 @@ public class Main {
         solarSystem.put(temp.getKey(), temp);
         dwarves.add(temp);
 
+//        for (HeavenlyBody heavenlyBody : solarSystem.values()){
+//            if (heavenlyBody.getSatellites().size() > 0) {
+//                System.out.print(heavenlyBody);
+//                System.out.print(", Satellites : ");
+//                System.out.println(heavenlyBody.getSatellites());
+//            }
+//        }
 
-        for (HeavenlyBody heavenlyBody : dwarves) {
-            System.out.println(heavenlyBody);
-        }
-
+        System.out.println(tempEarth.getSatellites());
 
     }
-
 }

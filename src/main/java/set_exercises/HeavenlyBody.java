@@ -20,7 +20,6 @@ public abstract class HeavenlyBody {
         this.key = new Key(name, bodyType);
         this.orbitalPeriod = orbitalPeriod;
         this.satellites = new HashSet<>();
-
     }
 
     public Key getKey() {
@@ -62,7 +61,7 @@ public abstract class HeavenlyBody {
 
     @Override
     public String toString() {
-        return this.key.name + " : " + this.key.bodyType + " , " + this.orbitalPeriod;
+        return this.key.name + " : " + this.key.bodyType + ", " + this.orbitalPeriod;
     }
 
     public static final class Key {
@@ -84,7 +83,7 @@ public abstract class HeavenlyBody {
 
         @Override
         public int hashCode() {
-            return this.name.hashCode() + 57 + this.bodyType.hashCode();
+            return this.name.hashCode() + this.bodyType.hashCode();
         }
 
         @Override
@@ -97,5 +96,4 @@ public abstract class HeavenlyBody {
             }
         }
     }
-
 }
