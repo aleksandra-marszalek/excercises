@@ -1,7 +1,7 @@
-package list_excercises.service.linked;
+package list_exercises.service.linked;
 import java.util.LinkedList;
 
-public class reverse {
+public class Reverse {
     public LinkedList<String> reversal(LinkedList<String> arr) {
         LinkedList<String> rev = new LinkedList<String>();
         int len = arr.size();

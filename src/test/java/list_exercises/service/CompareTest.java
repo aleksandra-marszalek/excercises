@@ -1,5 +1,4 @@
-package list_exercises.service.linked;
-import list_excercises.service.Compare;
+package list_exercises.service;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

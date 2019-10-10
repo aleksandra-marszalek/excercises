@@ -1,4 +1,4 @@
-package list_excercises.service;
+package list_exercises.service;
 import java.util.ArrayList;
 
 public class Compare {

@@ -1,6 +1,5 @@
 package list_exercises.service;
 
-import list_excercises.service.shuffle;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,13 +9,13 @@ import static org.junit.Assert.*;
 import static org.hamcrest.Matchers.*;
 
 @RunWith(JUnit4.class)
-public class shuffleTest {
+public class ShuffleTest {
 
-    private shuffle shuf;
+    private Shuffle shuf;
 
     @Before
     public void setup() {
-        shuf = new shuffle();
+        shuf = new Shuffle();
     }
 
     @Test

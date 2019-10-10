@@ -64,6 +64,14 @@ public class HeavenlyBodyTest {
     }
 
     @Test
+    public void equalsTestIdenticalObject() {
+        assertTrue(sun.equals(sun));
+        assertTrue(earth.equals(earth));
+        assertTrue(moon.equals(moon));
+        assertTrue(vesta.equals(vesta));
+    }
+
+    @Test
     public void equalsTestSame() {
         HeavenlyBody sunRepeat = new Star("Sun", 24.0);
         HeavenlyBody earthRepeat = new Planet("Earth", 365.25);
@@ -81,8 +89,14 @@ public class HeavenlyBodyTest {
 
     @Test
     public void equalsTestDifferent() {
-        HeavenlyBody sunFalseRepeat = new Star("Sun", 24.0);
-        assertFalse(sunFalseRepeat.equals(earth));
+        HeavenlyBody vega = new Star("Vega", 0.5);
+        assertFalse(vega.equals(sun));
+    }
+
+    @Test
+    public void equalsTestNotInstanceOfHeavenlyBody() {
+        String notHeavenlyBody = "Not a HeavenlyBody";
+        assertFalse(sun.equals(notHeavenlyBody));
     }
 
     @Test

@@ -1,4 +1,4 @@
-package list_excercises.service.linked;
+package list_exercises.service.linked;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

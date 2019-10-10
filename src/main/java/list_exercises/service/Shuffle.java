@@ -1,8 +1,8 @@
-package list_excercises.service;
+package list_exercises.service;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class shuffle {
+public class Shuffle {
 
     public ArrayList<String> shuffleArray(ArrayList<String> arr) {
         int n = arr.size();

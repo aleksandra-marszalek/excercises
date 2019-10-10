@@ -1,5 +1,4 @@
-package list_exercises.service;
-import list_excercises.service.linked.reverse;
+package list_exercises.service.linked;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,11 +10,11 @@ import static org.hamcrest.Matchers.*;
 @RunWith(JUnit4.class)
 public class ReverseTest {
 
-    private reverse reverses;
+    private Reverse reverses;
 
     @Before
     public void setup() {
-        reverses = new reverse();
+        reverses = new Reverse();
     }
 
     private LinkedList<String> makerFive(String a, String b, String c, String d, String e) {
