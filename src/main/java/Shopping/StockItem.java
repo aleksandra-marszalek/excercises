@@ -1,12 +1,11 @@
 package Shopping;
 
-import javax.print.DocFlavor;
-
 public class StockItem {
 
     private final String name;
     private double price;
     private int quantityStock;
+    private int reserved;
 
     public StockItem(String name, double price, int quantityStock) {
         this.name = name;
@@ -27,8 +26,37 @@ public class StockItem {
         return price;
     }
 
+    public int getReserved() {
+        return reserved;
+    }
+
     public int getQuantityStock() {
-        return quantityStock;
+        return quantityStock - reserved;
+    }
+
+    public int reserveStock(int quantity) {
+        if ((quantity <= getQuantityStock()) && (quantity > 0)) {
+            reserved += quantity;
+            return quantity;
+        }
+        return 0;
+    }
+
+    public int unreserveStock(int quantity) {
+        if ((quantity <= reserved) && (quantity > 0)) {
+            reserved -= quantity;
+            return quantity;
+        }
+        return 0;
+    }
+
+    public int finaliseStock(int quantity) {
+        if ((quantity <= reserved) && (quantity > 0)) {
+            quantityStock -= quantity;
+            reserved -= quantity;
+            return quantity;
+        }
+        return 0;
     }
 
     public void setPrice(double price) {
@@ -61,20 +89,20 @@ public class StockItem {
         return this.name.hashCode() + 15;
     }
 
-    @Override
-    public int compareTo(StockItem o) {
-        if (this == o) {
-            return 0;
-        }
-        if (o != null) {
-            return this.name.compareTo(o.getName());
-        }
-        throw new NullPointerException();
-    }
+//    @Override
+//    public int compareTo(StockItem o) {
+//        if (this == o) {
+//            return 0;
+//        }
+//        if (o != null) {
+//            return this.name.compareTo(o.getName());
+//        }
+//        throw new NullPointerException();
+//    }
 
     @Override
     public String toString() {
-        return this.name + " : " + this.price;
+        return this.name + " : " + this.price + ", Reserved: " + this.reserved;
     }
 
 }

@@ -1,16 +1,13 @@
 package Shopping;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
 
 public class StockList {
 
     private final Map<String, StockItem> list;
 
     public StockList(Map<String, StockItem> list) {
-        this.list = new LinkedHashMap<>();
+        this.list = new TreeMap<>();
     }
 
     public int addStock(StockItem item) {
@@ -27,9 +24,25 @@ public class StockList {
 
     public int sellStock(String item, int quantity) {
         StockItem inStock = list.getOrDefault(item, null);
-        if ((inStock != null) && (inStock.getQuantityStock() >= quantity) && (quantity > 0)) {
-            inStock.adjustStock(-quantity);
+        if ((inStock != null) && (quantity > 0)) {
+            inStock.finaliseStock(quantity);
             return quantity;
+        }
+        return 0;
+    }
+
+    public int reservestock(String item, int quantity) {
+        StockItem inStock = list.get(item);
+        if ((inStock != null) && (quantity > 0)) {
+            return inStock.reserveStock(quantity);
+        }
+        return 0;
+    }
+
+    public int unreservestock(String item, int quantity) {
+        StockItem inStock = list.get(item);
+        if ((inStock != null) && (quantity > 0)) {
+            return inStock.unreserveStock(quantity);
         }
         return 0;
     }
@@ -43,7 +56,7 @@ public class StockList {
         for (Map.Entry<String, StockItem> item : list.entrySet()) {
             prices.put(item.getKey(), item.getValue().getPrice());
         }
-        return Collections.unmodifiableMap(prices)
+        return Collections.unmodifiableMap(prices);
     }
 
 
